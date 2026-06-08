@@ -2,306 +2,913 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services - Tutor Hive</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <title>Services – TutorHive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      box-sizing: border-box;
+    /* ── RESET & ROOT ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --teal:        #00c6a9;
+      --teal-dark:   #029a83;
+      --teal-glow:   rgba(0,198,169,0.18);
+      --navy:        rgb(5, 64, 82);
+      --deep:        rgb(0, 4, 8);
+      --glass:       rgba(4, 63, 108, 0.52);
+      --glass-hover: rgba(5, 65, 56, 0.60);
+      --surface:     rgba(255,255,255,0.04);
+      --border:      rgba(0,198,169,0.18);
+      --text:        aliceblue;
+      --muted:       rgba(241,246,246,0.65);
+      --sidebar-w:   240px;
+      --ff-display:  'Playfair Display', Georgia, serif;
+      --ff-body:     'DM Sans', 'Times New Roman', sans-serif;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      color: white;
+      min-height: 100vh;
+      background: var(--deep);
+      color: var(--text);
+      font-family: var(--ff-body);
       display: flex;
       overflow-x: hidden;
-      position: relative;
     }
 
-    .background-animation {
+    /* ── ANIMATED BACKGROUND ── */
+    .bg-layer {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(135deg,
+        rgba(0,4,8,0.96)   0%,
+        rgba(2,87,118,0.88) 50%,
+        rgba(0,7,9,0.96)   100%);
+    }
+
+    /* Subtle grid overlay */
+    .bg-layer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,198,169,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,198,169,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .bubbles {
+      position: fixed;
+      inset: 0;
       z-index: -1;
+      pointer-events: none;
       overflow: hidden;
-      background: linear-gradient(to left, rgba(0, 7, 9, 0.932), rgb(2, 87, 118), rgb(75, 187, 222));
     }
 
     .bubble {
       position: absolute;
-      bottom: -100px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
+      bottom: -120px;
       border-radius: 50%;
-      animation: floatUp 20s linear infinite;
+      background: radial-gradient(circle at 30% 30%, rgba(0,198,169,0.18), rgba(2,87,118,0.06));
+      border: 1px solid rgba(0,198,169,0.12);
+      animation: floatUp linear infinite;
     }
-
-    .bubble:nth-child(2) {
-      width: 60px;
-      height: 60px;
-      left: 20%;
-      animation-duration: 25s;
-      animation-delay: 2s;
-    }
-
-    .bubble:nth-child(3) {
-      width: 20px;
-      height: 20px;
-      left: 40%;
-      animation-duration: 18s;
-      animation-delay: 4s;
-    }
-
-    .bubble:nth-child(4) {
-      width: 80px;
-      height: 80px;
-      left: 60%;
-      animation-duration: 30s;
-      animation-delay: 6s;
-    }
-
-    .bubble:nth-child(5) {
-      width: 50px;
-      height: 50px;
-      left: 80%;
-      animation-duration: 22s;
-      animation-delay: 1s;
-    }
+    .bubble:nth-child(1) { width:55px;  height:55px;  left:8%;   animation-duration:22s; animation-delay:0s;  }
+    .bubble:nth-child(2) { width:80px;  height:80px;  left:22%;  animation-duration:30s; animation-delay:3s;  }
+    .bubble:nth-child(3) { width:30px;  height:30px;  left:42%;  animation-duration:18s; animation-delay:6s;  }
+    .bubble:nth-child(4) { width:100px; height:100px; left:62%;  animation-duration:35s; animation-delay:2s;  }
+    .bubble:nth-child(5) { width:48px;  height:48px;  left:82%;  animation-duration:25s; animation-delay:4s;  }
+    .bubble:nth-child(6) { width:20px;  height:20px;  left:90%;  animation-duration:15s; animation-delay:1s;  }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.5;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-1200px) scale(1.2);
-        opacity: 0;
-      }
+      0%   { transform: translateY(0)      rotate(0deg);   opacity: 0;   }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0;   }
     }
 
+    /* ── SIDEBAR ── */
     .sidebar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 220px;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
       height: 100%;
-      background-color: rgb(5,62,82);
-      padding: 20px;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
-
-    .sidebar h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 26px;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .sidebar ul li {
-      margin: 15px 0;
-    }
-
-    .sidebar ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      display: block;
-      padding: 8px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .sidebar ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .main-content {
-      margin-left: 240px;
-      padding: 30px;
-      flex: 1;
-    }
-
-    .counter-section {
+      background: linear-gradient(180deg, rgba(5,64,82,0.98) 0%, rgba(0,28,40,0.98) 100%);
+      border-right: 1px solid var(--border);
+      padding: 36px 20px 30px;
       display: flex;
-      justify-content: space-around;
-      margin-bottom: 50px;
+      flex-direction: column;
+      z-index: 900;
+      backdrop-filter: blur(10px);
+    }
+
+    .sidebar-logo {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .sidebar-logo .wordmark {
+      font-family: var(--ff-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.5px;
+      display: block;
+    }
+    .sidebar-logo .wordmark span { color: var(--teal); }
+
+    .sidebar-logo .tagline {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 28px;
+    }
+
+    .nav-label {
+      font-size: 0.68rem;
+      letter-spacing: 3.5px;
+      color: rgba(0,198,169,0.55);
+      text-transform: uppercase;
+      padding: 0 8px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar nav ul { list-style: none; }
+
+    .sidebar nav ul li { margin-bottom: 4px; }
+
+    .sidebar nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: all 0.28s ease;
+      position: relative;
+    }
+
+    .sidebar nav ul li a .nav-icon {
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+      opacity: 0.75;
+    }
+
+    .sidebar nav ul li a:hover,
+    .sidebar nav ul li a.active {
+      color: var(--text);
+      background: rgba(0,198,169,0.1);
+      border-color: var(--border);
+    }
+
+    .sidebar nav ul li a.active {
+      color: var(--teal);
+    }
+
+    .sidebar nav ul li a.active .nav-icon { opacity: 1; }
+
+    .active-bar {
+      position: absolute;
+      right: -1px; top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 60%;
+      background: var(--teal);
+      border-radius: 3px 0 0 3px;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 16px 12px;
+      background: rgba(0,198,169,0.07);
+      border-radius: 12px;
+      border: 1px solid var(--border);
       text-align: center;
     }
 
-    .counter-box {
-      padding: 20px;
+    .sidebar-bottom p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .sidebar-bottom a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sidebar-bottom a:hover { text-decoration: underline; }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 48px 56px 80px;
+      max-width: 960px;
     }
 
-    .counter-box h2 {
-      font-size: 48px;
-      color: #2acbd3;
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-bottom: 56px;
     }
 
-    .counter-box p {
-      font-size: 18px;
-      color: #eee;
+    .page-tag {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      color: var(--teal);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 14px;
+      display: block;
     }
 
-    .services-section {
-      max-width: 800px;
-      margin: auto;
+    .page-header h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 60px;
+    }
+
+    .stat-tile {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, background 0.3s ease;
+      backdrop-filter: blur(6px);
     }
 
-    .services-section h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
+    .stat-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,198,169,0.12), transparent 65%);
+      pointer-events: none;
     }
 
-    .services-section p {
-      font-size: 18px;
-      color: #e0e0e0;
-      margin-bottom: 40px;
+    .stat-tile:hover {
+      transform: translateY(-6px);
+      background: var(--glass-hover);
+    }
+
+    .stat-tile .num {
+      font-family: var(--ff-display);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .stat-tile .label {
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+
+    /* ── SERVICE CARDS ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 60px;
     }
 
     .service-card {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+      backdrop-filter: blur(6px);
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,198,169,0.12), transparent 70%);
+      pointer-events: none;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      background: var(--glass-hover);
+      border-color: rgba(0,198,169,0.35);
+    }
+
+    .service-card:hover::before {
+      transform: scale(1.3);
+    }
+
+    .card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(0,198,169,0.13);
+      border: 1px solid rgba(0,198,169,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
       margin-bottom: 20px;
-      border-radius: 10px;
-      text-align: left;
     }
 
     .service-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
       margin-bottom: 10px;
-      font-size: 22px;
-      color: #2acbd3;
     }
 
     .service-card p {
-      font-size: 16px;
-      color: #ddd;
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(0,198,169,0.1);
+      color: var(--teal);
+      border: 1px solid rgba(0,198,169,0.2);
+      letter-spacing: 0.3px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+      transition: gap 0.2s ease;
+    }
+
+    .card-link:hover { gap: 10px; }
+    .card-link .arrow { font-size: 1rem; }
+
+    /* Featured card – full width */
+    .service-card.featured {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      border-color: rgba(0,198,169,0.3);
+      background: rgba(4, 63, 108, 0.7);
+    }
+
+    .service-card.featured .card-body { flex: 1; }
+
+    .featured-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(0,198,169,0.3);
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-bottom: 14px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── PROCESS STEPS ── */
+    .process-section { margin-bottom: 60px; }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right,
+        transparent,
+        rgba(0,198,169,0.4) 20%,
+        rgba(0,198,169,0.4) 80%,
+        transparent);
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid rgba(0,198,169,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 16px;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+
+    .step:hover .step-num {
+      background: rgba(0,198,169,0.18);
+      border-color: var(--teal);
+      transform: scale(1.1);
+    }
+
+    .step h4 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(0,198,169,0.15), rgba(5,64,82,0.55));
+      border: 1px solid rgba(0,198,169,0.3);
+      border-radius: 22px;
+      padding: 46px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,198,169,0.2), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-text h2 {
+      font-family: var(--ff-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .cta-text h2 span { color: var(--teal); }
+
+    .cta-text p {
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 13px 28px;
+      background: linear-gradient(to right, var(--teal-dark), var(--teal));
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 13px 28px;
+      background: transparent;
+      color: var(--teal);
+      text-decoration: none;
+      border-radius: 30px;
+      border: 1px solid rgba(0,198,169,0.4);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,198,169,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ── MOBILE HAMBURGER TOGGLE ── */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 1100;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: 42px; height: 42px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 20px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card.featured { flex-direction: column; }
+      .steps-row { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .steps-row::before { display: none; }
     }
 
     @media (max-width: 768px) {
-      .main-content {
-        margin-left: 0;
-        padding: 20px;
-      }
+      .menu-toggle { display: flex; }
 
       .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .sidebar.open { transform: translateX(0); }
+
+      .main {
+        margin-left: 0;
+        padding: 60px 20px 60px;
       }
 
-      .counter-section {
-        flex-direction: column;
-        gap: 20px;
-      }
+      .stats-strip { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; text-align: center; }
+      .cta-actions { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Animated Background -->
-  <div class="background-animation">
+  <!-- Background -->
+  <div class="bg-layer"></div>
+  <div class="bubbles">
+    <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
+
+  <!-- Hamburger (mobile) -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
 
   <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>Tutor Hive</h2>
-    <ul>
-      <li><a href="Project1.html">Home</a></li>
-      <li><a href="About1.html">About</a></li>
-      <li><a href="Services.html">Services</a></li>
-      <li><a href="Contact.html">Contact</a></li>
-    </ul>
-  </div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="wordmark">Tutor<span>Hive</span></span>
+      <span class="tagline">Learn without limits</span>
+    </div>
+    <div class="sidebar-divider"></div>
+    <p class="nav-label">Navigation</p>
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html">
+            <span class="nav-icon">🏠</span> Home
+          </a>
+        </li>
+        <li>
+          <a href="about.html">
+            <span class="nav-icon">👥</span> About
+          </a>
+        </li>
+        <li>
+          <a href="services.html" class="active">
+            <span class="nav-icon">📚</span> Services
+            <span class="active-bar"></span>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html">
+            <span class="nav-icon">✉️</span> Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="sidebar-bottom">
+      <p>Need help choosing?<br/>
+        <a href="contact.html">Talk to an advisor →</a>
+      </p>
+    </div>
+  </aside>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Counter Section -->
-    <div class="counter-section" data-aos="fade-up">
-      <div class="counter-box">
-        <h2 class="counter" data-target="500">0</h2>
-        <p>Students Tutored</p>
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Page Header -->
+    <header class="page-header" data-aos="fade-up">
+      <span class="page-tag">What We Offer</span>
+      <h1>Expert Tutoring,<br/><em>Built Around You</em></h1>
+      <p>Every student learns differently. Our services are designed to meet you where you are — and get you where you want to be.</p>
+    </header>
+
+    <!-- Stats Strip -->
+    <div class="stats-strip" data-aos="fade-up" data-aos-delay="100">
+      <div class="stat-tile">
+        <span class="num counter" data-target="500">0</span>
+        <span class="label">Students Tutored</span>
       </div>
-      <div class="counter-box">
-        <h2 class="counter" data-target="1200">0</h2>
-        <p>Hours of Tutoring</p>
+      <div class="stat-tile">
+        <span class="num counter" data-target="1200">0</span>
+        <span class="label">Hours of Tutoring</span>
       </div>
-      <div class="counter-box">
-        <h2 class="counter" data-target="95">0</h2>
-        <p>% Satisfaction</p>
+      <div class="stat-tile">
+        <span class="num counter" data-target="95">0</span>
+        <span class="label">% Satisfaction Rate</span>
       </div>
     </div>
 
-    <!-- Services Section -->
-    <div class="services-section" data-aos="fade-up">
-      <h1>Our Services</h1>
-      <p>We offer a range of tutoring services tailored to your academic needs.</p>
-
-      <div class="service-card">
-        <h3>1-on-1 Tutoring</h3>
-        <p>Personalized sessions with expert tutors in subjects like Math, Science, English, and more.</p>
+    <!-- Services -->
+    <section data-aos="fade-up" data-aos-delay="150">
+      <div class="section-heading">
+        <h2>Our Services</h2>
       </div>
 
-      <div class="service-card">
-        <h3>Test Prep</h3>
-        <p>Preparation for SAT, ACT, and other exams with strategies and practice tests.</p>
-      </div>
+      <div class="services-grid">
 
-      <div class="service-card">
-        <h3>Homework Help</h3>
-        <p>Instant support to tackle your daily school assignments efficiently.</p>
-      </div>
+        <!-- Featured -->
+        <div class="service-card featured">
+          <div class="card-icon">🎯</div>
+          <div class="card-body">
+            <span class="featured-badge">Most Popular</span>
+            <h3>1-on-1 Personalised Tutoring</h3>
+            <p>Dedicated sessions tailored entirely to your learning pace and goals. Work with hand-picked expert tutors across Math, Science, English, History, and 40+ other subjects — live, interactive, and on your schedule.</p>
+            <div class="card-tags">
+              <span class="tag">Live Sessions</span>
+              <span class="tag">All Subjects</span>
+              <span class="tag">Flexible Timing</span>
+              <span class="tag">Progress Tracking</span>
+            </div>
+            <a href="contact.html" class="card-link">Book a session <span class="arrow">→</span></a>
+          </div>
+        </div>
 
-      <div class="service-card">
-        <h3>College Counseling</h3>
-        <p>Guidance on applications, essays, and choosing the right college path.</p>
+        <!-- Card 2 -->
+        <div class="service-card">
+          <div class="card-icon">📝</div>
+          <h3>Exam & Test Prep</h3>
+          <p>Targeted coaching for SAT, ACT, JEE, NEET, CAT, and board exams — with full-length mocks, strategy sessions, and detailed performance analysis.</p>
+          <div class="card-tags">
+            <span class="tag">Mock Tests</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Analytics</span>
+          </div>
+          <a href="contact.html" class="card-link">Learn more <span class="arrow">→</span></a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card">
+          <div class="card-icon">⚡</div>
+          <h3>Homework Help</h3>
+          <p>Stuck on an assignment? Get instant, step-by-step guidance from tutors available round the clock — no appointment needed, no waiting.</p>
+          <div class="card-tags">
+            <span class="tag">Instant Help</span>
+            <span class="tag">24 / 7</span>
+            <span class="tag">All Grades</span>
+          </div>
+          <a href="contact.html" class="card-link">Get help now <span class="arrow">→</span></a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card">
+          <div class="card-icon">🎓</div>
+          <h3>College Counseling</h3>
+          <p>Navigate the college admissions process with confidence. From shortlisting schools and crafting standout essays to interview prep and scholarship guidance.</p>
+          <div class="card-tags">
+            <span class="tag">Applications</span>
+            <span class="tag">Essay Review</span>
+            <span class="tag">Scholarships</span>
+          </div>
+          <a href="contact.html" class="card-link">Explore plans <span class="arrow">→</span></a>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card">
+          <div class="card-icon">🌐</div>
+          <h3>Language Learning</h3>
+          <p>Conversational fluency in English, French, Spanish, Mandarin and more — with native-speaker tutors focused on practical, real-world communication.</p>
+          <div class="card-tags">
+            <span class="tag">6 Languages</span>
+            <span class="tag">Native Tutors</span>
+          </div>
+          <a href="contact.html" class="card-link">Start speaking <span class="arrow">→</span></a>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card">
+          <div class="card-icon">💻</div>
+          <h3>Coding & STEM Bootcamps</h3>
+          <p>Intensive group or 1-on-1 sessions covering Python, web development, data science basics, and robotics — designed for middle schoolers to undergrads.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Web Dev</span>
+            <span class="tag">Data Science</span>
+          </div>
+          <a href="contact.html" class="card-link">View schedule <span class="arrow">→</span></a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="process-section" data-aos="fade-up">
+      <div class="section-heading">
+        <h2>How It Works</h2>
+      </div>
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Choose a Service</h4>
+          <p>Browse our offerings and pick the one that fits your goal.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>Match With a Tutor</h4>
+          <p>We suggest tutors based on your subject, level, and schedule.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>Book a Session</h4>
+          <p>Pick a time that works for you — same-day options available.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>Track & Improve</h4>
+          <p>Get detailed session reports and watch your progress grow.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner" data-aos="fade-up">
+      <div class="cta-text">
+        <h2>Ready to start <span>learning smarter?</span></h2>
+        <p>Join thousands of students already thriving with TutorHive.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Get Started Free</a>
+        <a href="about.html"   class="btn-outline">Learn About Us</a>
       </div>
     </div>
-  </div>
 
-  <!-- AOS Animation -->
+  </main>
+
+  <!-- AOS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
+    AOS.init({ duration: 700, once: true, offset: 60 });
 
-  <!-- Counter Animation Script -->
-  <script>
+    /* Counter animation */
     const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / 100;
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const suffix = el.parentElement.querySelector('.label').textContent.startsWith('%') ? '%' : '';
+        let current = 0;
+        const step = Math.ceil(target / 80);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current.toLocaleString();
+          if (current >= target) clearInterval(timer);
+        }, 20);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
 
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 30);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updateCount();
+    /* Mobile sidebar toggle */
+    const toggle  = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
     });
   </script>
 

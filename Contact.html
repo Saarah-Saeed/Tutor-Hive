@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TutorHive – Contact Us</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+  <video class="video-background" autoplay muted loop playsinline>
+    <source src="your-background-video.mp4" type="video/mp4" />
+  </video>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">Tutor<span>Hive</span></div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+          <a href="#">Find a Tutor</a>
+          <a href="#">Become a Tutor</a>
+          <a href="#">Courses</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="contact-hero">
+    <p class="hero-tag">GET IN TOUCH</p>
+    <h1>We'd Love to <span>Hear From You</span></h1>
+    <p class="hero-sub">Whether you're a student looking for guidance or a tutor ready to inspire — we're just a message away.</p>
+  </section>
+
+  <!-- CONTACT LAYOUT -->
+  <section class="contact-layout">
+
+    <!-- INFO CARDS -->
+    <div class="contact-info">
+
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4>Our Location</h4>
+          <p>TutorHive HQ, 42 Knowledge Lane,<br/>New Delhi, India – 110001</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>Call Us</h4>
+          <p>+91 98765 43210<br/>Mon – Sat, 9am to 7pm</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <div>
+          <h4>Email Us</h4>
+          <p>support@tutorhive.in<br/>hello@tutorhive.in</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">💬</div>
+        <div>
+          <h4>Live Chat</h4>
+          <p>Available 24/7 on the platform.<br/>Average response: &lt; 2 min</p>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="social-row">
+        <a href="#" class="social-pill">Instagram</a>
+        <a href="#" class="social-pill">LinkedIn</a>
+        <a href="#" class="social-pill">Twitter/X</a>
+        <a href="#" class="social-pill">YouTube</a>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="form-card">
+      <h3>Send Us a Message</h3>
+      <p class="form-sub">We'll get back to you within 24 hours.</p>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="e.g. Riya Sharma" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="role">I am a...</label>
+        <select id="role">
+          <option value="">Select your role</option>
+          <option>Student</option>
+          <option>Tutor</option>
+          <option>Parent</option>
+          <option>Institution</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="What's this about?" />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Tell us how we can help..."></textarea>
+      </div>
+
+      <button class="submit-btn" id="submitBtn">
+        <span id="btnText">Send Message ✈</span>
+      </button>
+
+      <!-- Success message (hidden by default) -->
+      <div class="success-msg" id="successMsg">
+        ✅ Your message has been sent! We'll be in touch soon.
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <p class="section-tag center">QUICK ANSWERS</p>
+    <h2 class="center">Frequently Asked <span>Questions</span></h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">How do I book a tutor session? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>Simply create an account, browse tutors by subject, and hit the "Book Session" button on their profile. It's that easy!</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is TutorHive free to use? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>Browsing and creating an account is always free. Session fees are set by individual tutors — you'll see them clearly before booking.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How do I become a tutor? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>Click "Become a Tutor" in the navigation, fill in your profile and subject expertise, and our team will verify your credentials within 48 hours.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What subjects are available? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>We cover 50+ subjects across STEM, languages, arts, competitive exam prep (JEE, NEET, CAT), and more.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>TutorHive</strong>. All rights reserved. | <a href="about.html">About Us</a></p>
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>
