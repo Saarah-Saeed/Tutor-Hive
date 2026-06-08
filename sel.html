@@ -1,0 +1,159 @@
+<!------<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('s.jpg');
+    background-size: cover;
+    background-position: center;
+   /* filter: blur(5px);*/
+    z-index: -1; 
+  }
+
+
+    h2{
+      font-weight: bold;
+      font-size: 30px;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      color: #000704f4;
+    }
+
+    .signup-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    
+    }
+
+    .form-box {
+      background: rgba(247, 248, 249, 0.573);
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .form-box h3 {
+      font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      color: #0077cc;
+    }
+
+    .form-box label {
+      font-size: 15px;
+      font-family: 'Times New Roman', Times, serif;
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .form-box input[type="text"],
+    .form-box input[type="email"],
+    .form-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #0a0000;
+      border-radius: 15px;
+    }
+
+    .form-box button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .form-box button:hover {
+      background-color: #000305;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>Sign Up</h2>
+  <div class="signup-container">
+     
+    <div class="form-box">
+      <h3>Student Sign Up</h3>
+      <form action="/submit-student" method="POST">
+        <label for="student-name">Full Name</label>
+        <input type="text" id="student-name" name="student-name" required>
+
+        <label for="student-email">Email</label>
+        <input type="email" id="student-email" name="student-email" required>
+
+        <label for="student-class">Class</label>
+        <input type="text" id="student-class" name="student-class" required>
+
+        <label for="student-password">Password</label>
+        <input type="password" id="student-password" name="student-password" required>
+
+        <button type="submit">Sign Up as Student</button>
+      </form>
+    </div>
+
+    
+    <div class="form-box">
+      <h3>Teacher Sign Up</h3>
+      <form action="/submit-teacher" method="POST">
+        <label for="teacher-name">Full Name</label>
+        <input type="text" id="teacher-name" name="teacher-name" required>
+
+        <label for="teacher-email">Email</label>
+        <input type="email" id="teacher-email" name="teacher-email" required>
+
+        <label for="teacher-subject">Subject</label>
+        <input type="text" id="teacher-subject" name="teacher-subject" required>
+
+        <label for="teacher-password">Password</label>
+        <input type="password" id="teacher-password" name="teacher-password" required>
+
+        <button type="submit">Sign Up as Teacher</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Sign Up Type</title>
+  <link rel="stylesheet" href="sel.css">
+</head>
+<body>
+
+  <div class="selection-container">
+    <h1>Sign Up As</h1>
+    <div class="options">
+      <a href="student-signup.html" class="option-box student">Student</a>
+      <a href="teacher-signup.html" class="option-box teacher">Teacher</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(to right,white, rgb(5,62,82), black);
+  min-height: 100vh;
+  color: #333;
+
+}*
+ body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      color: rgb(0, 5, 6);
+      background-image: linear-gradient(to right, rgba(38, 1, 126, 0.544),rgb(62, 8, 154),rgba(38, 1, 126, 0.544));
+
+    }
+
+
+  
+  /*  .background-blur {
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  z-index: -1;
+  background: linear-gradient(-45deg, #02431c, #e977ca,rgb(221, 227, 229),rgb(4, 249, 45));
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  filter: blur(6px);
+  opacity: 0.85;
+}
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+/* NAVBAR *
+header {
+  background: linear-gradient(to left,rgb(0, 0, 0),rgb(5, 64, 82),rgb(0, 4, 8));
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 3px solid #fff;
+}
+
+.logo-text {
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #f7f4f4;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  border-bottom: 4px solid #fff;
+}
+
+/* ABOUT SECTION *
+.about-section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: rgba(232, 239, 242, 0.842);
+  margin: 40px auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-section h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 40px;
+  color:  rgb(5,62,82);
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-weight:300;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color:  rgb(5,62,82);
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+}
+.our-mission {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: rgba(232, 239, 242, 0.842);
+  margin: 40px auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.our-mission h1{
+  font-weight:bold;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(5,62,82);
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+.our-vision{
+  padding: 80px 20px;
+  text-align: center;
+  background-color: rgba(232, 239, 242, 0.842);
+  margin: 40px auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.our-vision h1{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(5,62,82);
+  margin-bottom: 20px;
+  font-size: 40px;
+
+}
+.our-mission span{
+  color: rgb(5,62,82);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.our-mission p{
+  color: rgb(5,62,82);
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1.8;
+  font-size: 18px;
+}
+.our-vision p{
+  color: rgb(5,62,82);
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.testimonial-section {
+  max-width: 600px;
+  margin: auto;
+}
+
+.testimonial {
+  background: #fff;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(246, 243, 243, 0.784);
+  overflow: hidden;
+}
+
+.testimonial-header {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  background: rgb(5,62,82);
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  position: relative;
+}
+
+.testimonial-header::after {
+  content: '+';
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+.testimonial-section h2{
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.testimonial-header.active::after {
+  content: '-';
+  transform: rotate(180deg);
+}
+
+.testimonial-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background: #fafafa;
+  transition: max-height 0.5s ease;
+}
+
+.testimonial-content p {
+  margin: 15px 0;
+}
+
+.testimonial-content.show {
+  max-height: 500px; 
+}

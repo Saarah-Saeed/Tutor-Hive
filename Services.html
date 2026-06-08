@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - Tutor Hive</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: white;
+      display: flex;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: linear-gradient(to left, rgba(0, 7, 9, 0.932), rgb(2, 87, 118), rgb(75, 187, 222));
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: floatUp 20s linear infinite;
+    }
+
+    .bubble:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      left: 20%;
+      animation-duration: 25s;
+      animation-delay: 2s;
+    }
+
+    .bubble:nth-child(3) {
+      width: 20px;
+      height: 20px;
+      left: 40%;
+      animation-duration: 18s;
+      animation-delay: 4s;
+    }
+
+    .bubble:nth-child(4) {
+      width: 80px;
+      height: 80px;
+      left: 60%;
+      animation-duration: 30s;
+      animation-delay: 6s;
+    }
+
+    .bubble:nth-child(5) {
+      width: 50px;
+      height: 50px;
+      left: 80%;
+      animation-duration: 22s;
+      animation-delay: 1s;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1200px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100%;
+      background-color: rgb(5,62,82);
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 26px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .main-content {
+      margin-left: 240px;
+      padding: 30px;
+      flex: 1;
+    }
+
+    .counter-section {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .counter-box {
+      padding: 20px;
+    }
+
+    .counter-box h2 {
+      font-size: 48px;
+      color: #2acbd3;
+    }
+
+    .counter-box p {
+      font-size: 18px;
+      color: #eee;
+    }
+
+    .services-section {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .services-section h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .services-section p {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-bottom: 40px;
+    }
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #2acbd3;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .counter-section {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="background-animation">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Tutor Hive</h2>
+    <ul>
+      <li><a href="Project1.html">Home</a></li>
+      <li><a href="About1.html">About</a></li>
+      <li><a href="Services.html">Services</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Counter Section -->
+    <div class="counter-section" data-aos="fade-up">
+      <div class="counter-box">
+        <h2 class="counter" data-target="500">0</h2>
+        <p>Students Tutored</p>
+      </div>
+      <div class="counter-box">
+        <h2 class="counter" data-target="1200">0</h2>
+        <p>Hours of Tutoring</p>
+      </div>
+      <div class="counter-box">
+        <h2 class="counter" data-target="95">0</h2>
+        <p>% Satisfaction</p>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section" data-aos="fade-up">
+      <h1>Our Services</h1>
+      <p>We offer a range of tutoring services tailored to your academic needs.</p>
+
+      <div class="service-card">
+        <h3>1-on-1 Tutoring</h3>
+        <p>Personalized sessions with expert tutors in subjects like Math, Science, English, and more.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Test Prep</h3>
+        <p>Preparation for SAT, ACT, and other exams with strategies and practice tests.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Homework Help</h3>
+        <p>Instant support to tackle your daily school assignments efficiently.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>College Counseling</h3>
+        <p>Guidance on applications, essays, and choosing the right college path.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AOS Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <!-- Counter Animation Script -->
+  <script>
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 100;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 30);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+  </script>
+
+</body>
+</html>
