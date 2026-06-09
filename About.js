@@ -1,6 +1,4 @@
-// =====================
-// ABOUT PAGE — JavaScript
-// =====================
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -8,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const statCards = document.querySelectorAll('.stat-card h2');
 
   function animateCount(el) {
-    const raw = el.textContent.trim();               // e.g. "10K+", "98%"
-    const suffix = raw.replace(/[\d.]/g, '');        // "+", "K+", "%"
-    const numStr  = raw.replace(/[^\d.]/g, '');      // "10", "98", "2", "50"
+    const raw = el.textContent.trim();               
+    const suffix = raw.replace(/[\d.]/g, '');       
+    const numStr  = raw.replace(/[^\d.]/g, '');      
     const target  = parseFloat(numStr);
 
     let start = 0;
